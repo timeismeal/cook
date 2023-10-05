@@ -25,7 +25,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  //formkit: {
-    //autoImport: true,
-  //},
+  formkit: {
+    autoImport: true,
+  },
 })
