@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     // 'stripe-next',
     '@formkit/nuxt',
     '@nuxtjs/tailwindcss',
+    '@pinia/nuxt',
   ],
   runtimeConfig: {
     openAi: {
