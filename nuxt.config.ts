@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
   ],
   runtimeConfig: {
-    openAi: {
+    openai: {
       key: process.env.OPENAI_KEY,
     }
   },

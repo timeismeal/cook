@@ -19,7 +19,6 @@ const data = ref({
 // --- COMPUTED BLOCK ---
 
 const calculatedHeight = computed(() => {
-  console.log("ch ", props, data.value);
   return (props.width * data.value.baseHeight) / data.value.baseWidth;
 });
 

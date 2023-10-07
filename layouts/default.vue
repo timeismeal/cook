@@ -20,6 +20,7 @@ const navigation = [
   { name: "Home", href: "#", current: true },
   { name: "Recipes & Collections", href: "#", current: false },
   { name: "Grocery Lists", href: "#", current: false },
+  { name: "Chats", href: "/chats", current: false },
 ];
 const userNavigation = [
   { name: "Your Profile", href: "#" },
