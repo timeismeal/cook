@@ -19,7 +19,7 @@ const formSubmit = async (e) => {
         response.value = res;
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
   } catch (error) {
     console.error(error);
