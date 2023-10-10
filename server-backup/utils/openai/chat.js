@@ -13,16 +13,18 @@ export const getResponse = async (prompt) => {
 	return response.choices
 }
 
-export const getResponseStream = async ({ messages }) => {
+export const getResponseStream = async (prompt) => {
+	console.log('getReponseStream prompt: ', prompt)
 	const response = await openai.chat.completions.create(
 		{
 			model: 'gpt-3.5-turbo',
 			max_tokens: 2048,
 			temperature: 0.5,
 			stream: true,
-			messages,
+			messages: [ { role: 'user', content: prompt } ],
 		},
 		{ responseType: 'stream' },
 	)
+	console.log('getReponseStream response: ', response)
 	return response.choices
 }

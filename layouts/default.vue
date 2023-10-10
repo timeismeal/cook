@@ -48,7 +48,7 @@ const userNavigation = [
 <template lang="pug">
 .min-h-full
   disclosure(as="nav" class="xbg-gray-800" v-slot="{ open }")
-    .mx-auto.xxx-max-w-7xl.px-4(class="sm:px-6 lg:px-8")
+    .mx-auto.xxx-max-w-7xl.px-4(class="sm:px-6 lg:pr-8")
       .flex.h-16.items-center.justify-between.relative
 
         //- LEFT SECTION

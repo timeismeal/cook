@@ -2,7 +2,7 @@
 const props = defineProps({
   brandColor: {
     type: String,
-    default: "#2C6447",
+    default: "#4ABFE2",
   },
   width: {
     type: [String, Number],
