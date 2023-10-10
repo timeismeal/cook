@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
-const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
+// const colors = require('tailwindcss/colors')
 
 module.exports = {
   content: [
@@ -13,6 +14,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        black: {
+          DEFAULT: '#000000',
+          100: "#000000",
+          200: "#000000",
+          300: "#000000",
+          400: "#000000",
+          500: "#000000",
+          600: "#000000",
+          700: "#000000",
+          800: "#000000",
+          900: "#000000",
+        },
         primary: {
           DEFAULT: '#4ABFE2',
           100: "#E4F7FD",
@@ -25,6 +38,10 @@ module.exports = {
           800: "#297F9E",
           900: "#1E657F",
         },
+      },
+      fontFamily: {
+        // 'sans': ['"Proxima Nova"', ...defaultTheme.fontFamily.sans],
+        'sans': ['"Open Sans"', ...defaultTheme.fontFamily.sans],
       },
     },
   },

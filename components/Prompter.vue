@@ -1,4 +1,3 @@
-import { mergeProps } from 'vue';
 <script setup>
 // -- data --
 // const messages = ref([]);

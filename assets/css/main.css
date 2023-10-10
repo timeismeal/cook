@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-.debug-danger {
+.debug-red {
   border: 1px dashed red;
+}
+
+.debug-blue {
+  border: 1px dashed blue;
+}
+
+.debug-yellow {
+  border: 1px dashed yellow;
+}
+
+.debug-orange {
+  border: 1px dashed orange;
 }
