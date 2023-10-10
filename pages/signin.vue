@@ -27,7 +27,8 @@ div
         div(class="sm:mx-auto sm:w-full sm:max-w-sm")
           .flex.items-center.justify-center
             brand(width="300")
-          h2(class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900") Sign in to your account
+          h2.mt-10.text-center.text-2xl.font-bold.leading-9.tracking-tight.text-gray-600
+            | Welcome back
         div(class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm")
           form(class="space-y-6" action="#" method="POST")
             div
