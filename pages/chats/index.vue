@@ -44,5 +44,16 @@ const askQuestion = async () => {
     div
       label Question:
         input(v-model="question" type="text")
-      button.bg-blue-500.py-1.px-3.rounded.font-bold.text-white(type="submit") Ask
+      button.bg-primary-500.py-1.px-3.rounded.font-bold.text-white(type="submit") Ask
+
+
+  prompter(
+    label="Design a meal plan for diabetics"
+    desc="to manage blood sugar through balanced eating"
+    )
+
+  prompter.mt-3(
+    label="Get high-protein breakfast ideas"
+    desc="to start your day with energy and nutrition"
+    )
 </template>
