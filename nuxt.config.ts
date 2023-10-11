@@ -22,6 +22,7 @@ export default defineNuxtConfig({
     '@formkit/nuxt',
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
+    '@nuxtjs/supabase',
   ],
   runtimeConfig: {
     openai: {
@@ -37,5 +38,9 @@ export default defineNuxtConfig({
   },
   formkit: {
     autoImport: true,
+  },
+  supabase: {
+    url: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_KEY,
   },
 })

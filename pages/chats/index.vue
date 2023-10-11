@@ -4,6 +4,7 @@ import { getAnswer } from "@/repo/chat.js";
 const messages = ref([]);
 const answer = ref(null);
 const question = ref("say it aint so");
+const user = useSupabaseUser();
 
 const askQuestion = async () => {
   console.log("askQuestion called");
@@ -34,6 +35,7 @@ const askQuestion = async () => {
 
 <template lang="pug">
 .chat-index
+  pre user: {{ user }}
   pre messages: {{ messages }}
   form(@submit.prevent="askQuestion")
     ul

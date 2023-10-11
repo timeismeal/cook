@@ -1,7 +1,7 @@
 <script setup>
+const user = useSupabaseUser();
 // const router = useRouter()
 // const route = useRoute()
-// const user = useCurrentUser()
 // we don't need this watcher on server
 // onMounted(() => {
 //   watch(user, (user, prevUser) => {
@@ -18,7 +18,7 @@
 
 <template>
   <div>
-    <NuxtLayout>
+    <NuxtLayout x-if="user">
       <NuxtPage />
     </NuxtLayout>
   </div>
