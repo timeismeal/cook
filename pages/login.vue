@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const supabase = useSupabaseClient();
-const user = useSupabaseUser();
 const loading = ref(false);
 const email = ref("hi@chadtaylor.io");
 const password = ref("ToAllAGoodNight!");
@@ -65,8 +64,6 @@ const handleLogin = async (method) => {
 
     //- *** RIGHT SIDE ***
     template(#rightside)
-
-      pre user: {{ user }}
 
       .p-4(class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8")
         div(class="sm:mx-auto sm:w-full sm:max-w-sm")
