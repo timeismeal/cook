@@ -9,42 +9,35 @@ definePageMeta({
   layout: false,
 });
 
-const handleLogin = async () => {
+const handleLogin = async (method) => {
   try {
     loading.value = true;
-    // const { error } = await supabase.auth.signInWithOtp({ email: email.value });
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: email.value,
-      password: password.value,
-    });
+    let response = null;
+
+    if (method === "email") {
+      response = await supabase.auth.signInWithPassword({
+        email: email.value,
+        password: password.value,
+      });
+    } else if (method === "google") {
+      response = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: "http://localhost:3000/confirm",
+        },
+      });
+    } else {
+      return console.error("Invalid login method");
+    }
+
+    // Error Management
+    const { data, error } = response;
     if (error) {
       console.error("supabase error", error);
       throw error;
-      // alert(error.message);
     }
-    // alert("Check your email for the login link!");
   } catch (error) {
     console.error("supabase error", error);
-    alert(error.error_description || error.message);
-  } finally {
-    loading.value = false;
-    navigateTo("/chats");
-  }
-};
-
-const handleOAuthLogin = async () => {
-  try {
-    loading.value = true;
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: "/chats",
-        // skipBrowserRedirect: false,
-      },
-    });
-  } catch (error) {
-    console.error("supabase error", error);
-    alert(error.error_description || error.message);
   } finally {
     loading.value = false;
   }
@@ -85,7 +78,7 @@ const handleOAuthLogin = async () => {
 
           form(
             class="space-y-6"
-            @submit.prevent="handleOAuthLogin"
+            @submit.prevent="handleLogin('google')"
             )
 
             div

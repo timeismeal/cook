@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const user = useSupabaseUser();
+const sb = useSupabaseClient();
+
 watch(
   user,
   () => {
@@ -13,5 +15,7 @@ watch(
 
 <template lang="pug">
 div
-	| Waiting for login...
+  .border.p-2.rounded.mb-3 Waiting for login...
+  pre user {{ user }}
+  pre u {{ u }}
 </template>

@@ -1,5 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import firebaseAdmin from 'firebase-admin'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -42,5 +41,9 @@ export default defineNuxtConfig({
   supabase: {
     url: process.env.SUPABASE_URL,
     key: process.env.SUPABASE_KEY,
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+    },
   },
 })
