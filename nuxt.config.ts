@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import firebaseAdmin from 'firebase-admin'
 import dotenv from 'dotenv'
 
 dotenv.config()
