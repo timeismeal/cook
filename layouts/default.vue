@@ -40,7 +40,7 @@ const navigation = [
 ];
 const userNavigation = [
   { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
+  { name: "Settings", href: "/settings" },
   { name: "Sign out", href: "/signout" },
 ];
 </script>
@@ -59,7 +59,7 @@ const userNavigation = [
                 v-for="item in navigation"
                 :key="item.name"
                 :href="item.href"
-                :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-200 hover:text-gray-500', 'rounded-md px-3 py-2 text-sm font-bold' ]"
+                :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-200 hover:text-gray-500', 'rounded-md px-3 py-2 text-sm font-semibold' ]"
                 :aria-current="item.current ? 'page' : undefined"
                 )
                 //- shopping-cart-icon.text-xs(class="h-5 w-5 text-sm" aria-hidden="true")

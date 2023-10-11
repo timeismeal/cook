@@ -1,12 +1,31 @@
 <script setup lang="ts">
-import { EllipsisHorizontalCircleIcon } from "@heroicons/vue/24/outline";
-
 const pulseSize = 6;
+const user = useSupabaseUser();
+const route = useRoute();
 
 definePageMeta({
   layout: false,
 });
 
+onMounted(() => {
+  watch(
+    user,
+    (user, prevUser) => {
+      console.log("the watch has ended", user, prevUser);
+      if (prevUser && !user) {
+        // user logged out
+        router.push("/login");
+      } else if (user && typeof route.query.redirect === "string") {
+        console.log("redirecting", route);
+        // user logged in
+        navigateTo(route.query.redirect);
+      } else if (user) {
+        navigateTo("/");
+      }
+    },
+    { immediate: true }
+  );
+});
 const pulseClass = computed(() => {
   return `h-${pulseSize} w-${pulseSize}`;
 });

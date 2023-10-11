@@ -70,7 +70,7 @@ const handleLogin = async (method) => {
           .flex.items-center.justify-center
             brand(width="300")
           h2.mt-10.text-center.text-2xl.font-bold.leading-9.tracking-tight.text-gray-600
-            | Welcome back
+            | Get your apron on!
         div(class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm")
 
           form(
@@ -100,7 +100,7 @@ const handleLogin = async (method) => {
                 label(for="password" class="block text-sm font-medium leading-6 text-gray-900")
                   | Password
                 div(class="text-sm")
-                  nuxt-link(to="/password-reset" class="font-semibold text-primary-600 hover:text-primary-500")
+                  a(href="#" class="font-semibold text-primary-600 hover:text-primary-500")
                     | Forgot password?
               div(class="mt-2")
                 input(
