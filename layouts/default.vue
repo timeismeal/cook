@@ -28,13 +28,13 @@ const navigation = [
     name: "Recipes & Collections",
     href: "#",
     current: false,
-    component: QueueListIcon,
+    icon: "collection",
   },
   {
     name: "Shopping Lists",
     href: "#",
     current: false,
-    component: ShoppingCartIcon,
+    icon: "shopping-cart",
   },
   // { name: "Chats", href: "/chats", current: false },
 ];
@@ -62,12 +62,7 @@ const userNavigation = [
                 :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-200 hover:text-gray-500', 'rounded-md px-3 py-2 text-sm font-semibold' ]"
                 :aria-current="item.current ? 'page' : undefined"
                 )
-                //- shopping-cart-icon.text-xs(class="h-5 w-5 text-sm" aria-hidden="true")
-                //- queue-list-icon.text-xs(class="h-5 w-5 text-sm" aria-hidden="true")
-                component.h-5.w-5.mr-1(
-                  :is="item.component"
-                  aria-hidden="true"
-                  )
+                icon.mr-1(:icon="item.icon")
                 span {{ item.name }}
 
         //- MIDDLE SECTION

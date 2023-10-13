@@ -98,6 +98,13 @@ const onPasswordReset = async () => {
           | If things still look fishy, shoot us an email at support@timeismeal.com. We're here to serve!
 
         .text-center.mt-10
-          nuxt-link.text-primary(to="/login") Back to login
+          nuxt-link.text-primary(to="/login")
+            icon(
+              icon="back"
+              class="mr-1"
+              weight="outline"
+              size="5"
+              )
+            | Back to login
 
 </template>
