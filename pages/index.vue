@@ -1,8 +1,18 @@
-<script setup lang="ts"></script>
+<script setup>
+const products = ref();
+
+const fetchProducts = async () => {
+  const data = await $fetch("/api/products/get");
+  products.value = data;
+};
+</script>
 
 <template lang="pug">
-div
-  | index/pages
-  | And to all a good night
-  icon(icon="back")
+.page-index
+  app-button(
+    @click="fetchProducts"
+    value="Fetch Products"
+    )
+
+  pre products: {{ products }}
 </template>

@@ -10,7 +10,7 @@ const response = ref(null);
 const formSubmit = async (e) => {
   e.preventDefault();
   try {
-    await $fetch("/api/chatai", {
+    await $fetch("/api/chat", {
       method: "POST",
       // body: JSON.stringify({ prompt: input.value, otherParams: params }),
       body: JSON.stringify({ prompt: input.value }),
