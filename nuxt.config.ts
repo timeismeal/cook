@@ -28,7 +28,7 @@ export default defineNuxtConfig({
       key: process.env.OPENAI_KEY,
     }
   },
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/custom.css'],
   postcss: {
     plugins: {
       tailwindcss: {},

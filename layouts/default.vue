@@ -26,13 +26,13 @@ const navigation = [
   // { name: "Home", href: "#", current: true },
   {
     name: "Recipes & Collections",
-    href: "#",
+    href: "/collections",
     current: false,
     icon: "collection",
   },
   {
     name: "Shopping Lists",
-    href: "#",
+    href: "/lists",
     current: false,
     icon: "shopping-cart",
   },

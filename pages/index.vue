@@ -1,5 +1,5 @@
 <script setup>
-const products = ref();
+const products = ref([]);
 
 const fetchProducts = async () => {
   const data = await $fetch("/api/products/get");
