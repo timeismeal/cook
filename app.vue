@@ -1,4 +1,19 @@
 <script setup>
+useHead({
+  htmlAttrs: {
+    "data-theme": "light",
+  },
+  bodyAttrs: {
+    class: "h-screen xoverflow-hidden",
+  },
+  meta: [
+    {
+      name: "viewport",
+      content: "width=device-width, initial-scale=1.0",
+    },
+  ],
+});
+
 const user = useSupabaseUser();
 const route = useRoute();
 // onMounted(() => {

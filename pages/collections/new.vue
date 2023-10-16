@@ -6,7 +6,12 @@
 // });
 
 // -- props --
-// const props = defineProps({});
+const props = defineProps({
+  value: {
+    type: Object,
+    default: () => ({}),
+  },
+});
 
 // -- computed --
 // const calculatedHeight = computed(() => { return ... })
@@ -23,24 +28,10 @@ const onSubmit = () => {
 </script>
 
 <template lang="pug">
-.page-collections-new.debug-red
-	| Let's create a new collection
-
-	FormKit
-
-	//- FormKit(
-		type="form"
-		xdefault="{ value }"
-		xsubmit="onSubmit"
-		xvalue="data"
-		)
-
-		//- form-kit(
-			type="text"
-			label="Collection name"
-			name="label"
-			xvalidation="required"
-			help="This is the name of your collection"
-			)
-
+div
+  | Lovely Collections
+  input.input.input-bordered.w-full.max-w-xs(
+    type="text"
+    class="focus:border-primary focus:ring-primary"
+    )
 </template>
