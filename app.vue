@@ -2,6 +2,7 @@
 useHead({
   htmlAttrs: {
     "data-theme": "light",
+    "xdata-theme": "business",
   },
   bodyAttrs: {
     class: "h-screen xoverflow-hidden",

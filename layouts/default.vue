@@ -1,38 +1,24 @@
 <script setup>
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-} from "@headlessui/vue";
-import {
-  Bars3Icon,
-  BellIcon,
-  XMarkIcon,
-  ShoppingCartIcon,
-  QueueListIcon,
-} from "@heroicons/vue/24/outline";
-
 const user = {
   name: "Tom Cook",
   email: "tom@example.com",
   imageUrl:
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
-const navigation = [
+
+const isRightDrawerOpen = ref(false);
+
+const navigations = [
   // { name: "Home", href: "#", current: true },
   {
     name: "Recipes & Collections",
-    href: "/collections",
+    to: "/collections",
     current: false,
     icon: "collection",
   },
   {
     name: "Shopping Lists",
-    href: "/lists",
+    to: "/lists",
     current: false,
     icon: "shopping-cart",
   },
@@ -45,135 +31,143 @@ const userNavigation = [
 ];
 </script>
 
-<template lang="pug">
-.min-h-full
-  disclosure(as="nav" class="xbg-gray-800" v-slot="{ open }")
-    .mx-auto.xxx-max-w-7xl.px-4(class="sm:px-6 lg:pr-8")
-      .flex.h-16.items-center.justify-between.relative
+<template>
+  <div class="min-h-full.debug-yellow">
+    <div class="navbar bg-base-100 border-b">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <label
+            for="my-drawer"
+            tabindex="0"
+            class="btn btn-ghost btn-circle lg:hidden"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
+          </label>
+          <div class="flex-none hidden lg:block">
+            <ul class="menu menu-horizontal">
+              <li v-for="nav of navigations">
+                <nuxt-link :to="nav.to" class="link font-semibold">{{
+                  nav.name
+                }}</nuxt-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-        //- LEFT SECTION
-        .flex-none.z-10
-          .hidden(class="md:block")
-            .xml-10.flex.items-baseline.xspace-x-4
-              a.flex(
-                v-for="item in navigation"
-                :key="item.name"
-                :href="item.href"
-                :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-200 hover:text-gray-500', 'rounded-md px-3 py-2 text-sm font-semibold' ]"
-                :aria-current="item.current ? 'page' : undefined"
-                )
-                icon.mr-1(:icon="item.icon")
-                span {{ item.name }}
+      <div class="navbar-center">
+        <brand width="170" />
+      </div>
 
-        //- MIDDLE SECTION
-        .absolute.inset-x-0.inset-y-0.flex.items-center.justify-center
-          //- img(class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company")
-          brand.relative(width="200" style="top: -2px;")
+      <div class="navbar-end">
+        <button class="btn btn-ghost btn-circle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </button>
+        <button class="btn btn-ghost btn-circle">
+          <div class="indicator">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+              />
+            </svg>
+            <span class="badge badge-xs badge-primary indicator-item"></span>
+          </div>
+        </button>
+        <!-- <label for="my-drawer" tabindex="0" class="btn btn-ghost btn-circle"> -->
+        <label
+          for="right-drawer"
+          tabindex="0"
+          class="btn btn-ghost btn-circle avatar"
+        >
+          <div class="w-10 rounded-full">
+            <img
+              src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+            />
+          </div>
+        </label>
+      </div>
+    </div>
 
-        //- RIGHT SECTION
-        .hidden.flex-none(class="md:block max-w-1/2")
-          div(class="ml-4 flex items-center md:ml-6")
-            button(
-              type="button"
-              class="relative rounded-full bg-gray-800 p-1 text-gray-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-              )
-              span(class="absolute -inset-1.5")
-              span(class="sr-only") View notifications
-              bell-icon(class="h-6 w-6" aria-hidden="true")
+    <main>
+      <div class="mx-auto max-w-7xl py-8 sm:px-8 lg:px-8">
+        <pre>isRightDrawerOpen {{ isRightDrawerOpen }}</pre>
+        <slot />
+      </div>
+    </main>
 
-            //- Profile dropdown
-            Menu(as="div" class="relative ml-3")
-              div
-                MenuButton(
-                  class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  )
-                  span(class="absolute -inset-1.5")
-                  span(class="sr-only") Open user menu
-                  img(
-                    class="h-8 w-8 rounded-full"
-                    :src="user.imageUrl"
-                    alt=""
-                    )
-              transition(
-                enter-active-class="transition ease-out duration-100"
-                enter-from-class="transform opacity-0 scale-95"
-                enter-to-class="transform opacity-100 scale-100"
-                leave-active-class="transition ease-in duration-75"
-                leave-from-class="transform opacity-100 scale-100"
-                leave-to-class="transform opacity-0 scale-95"
-                )
-                MenuItems(
-                  class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                  )
-                  MenuItem(
-                    v-for="item in userNavigation"
-                    :key="item.name"
-                    v-slot="{ active }"
-                    )
-                    a(
-                      :href="item.href"
-                      :class="[ active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700', ]"
-                      )
-                      | {{ item.name }}
+    <div class="drawer">
+      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+      <div class="drawer-side">
+        <label
+          for="my-drawer"
+          aria-label="close sidebar"
+          class="drawer-overlay"
+        ></label>
+        <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+          <!-- Sidebar content here -->
+          <li><a>Recipes & Collections</a></li>
+          <li><a>Shopping Lists</a></li>
+        </ul>
+      </div>
+    </div>
 
-        div(class="-mr-2 flex md:hidden")
-
-          //- Mobile menu button
-          disclosure-button(
-            class="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-            )
-            span(class="absolute -inset-0.5")
-            span(class="sr-only") Open main menu
-            Bars3Icon(
-              v-if="!open"
-              class="block h-6 w-6"
-              aria-hidden="true"
-              )
-            XMarkIcon(v-else class="block h-6 w-6" aria-hidden="true")
-
-    disclosure-panel(class="md:hidden")
-      div(class="space-y-1 px-2 pb-3 pt-2 sm:px-3")
-        disclosure-button(
-          v-for="item in navigation"
-          :key="item.name"
-          as="a"
-          :href="item.href"
-          :class="[ item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'block rounded-md px-3 py-2 text-base font-medium' ]"
-          :aria-current="item.current ? 'page' : undefined"
-          )
-          | {{ item.name }}
-
-      div(class="border-t border-gray-700 pb-3 pt-4")
-        div(class="flex items-center px-5")
-          div(class="flex-shrink-0")
-            img(class="h-10 w-10 rounded-full" :src="user.imageUrl" alt="")
-          div(class="ml-3")
-            div(class="text-base font-medium leading-none text-white")
-              | {{ user.name }}
-            div(class="text-sm font-medium leading-none text-gray-400")
-              | {{ user.email }}
-          button(
-            type="button"
-            class="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-            )
-            span(class="absolute -inset-1.5")
-            span(class="sr-only") View notifications
-            BellIcon(class="h-6 w-6" aria-hidden="true")
-        div(class="mt-3 space-y-1 px-2")
-          disclosure-button(
-            v-for="item in userNavigation"
-            :key="item.name"
-            as="a"
-            :href="item.href"
-            class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-            )
-            | {{ item.name }}
-
-  //- header(class="bg-white shadow")
-    div(class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8")
-
-  main
-    hr
-    div(class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8")
-      slot
+    <div class="drawer drawer-end">
+      <input
+        id="right-drawer"
+        type="checkbox"
+        class="drawer-toggle"
+        v-model="isRightDrawerOpen"
+      />
+      <div class="drawer-side">
+        <label
+          for="right-drawer"
+          aria-label="close sidebar"
+          :class="{
+            'drawer-overlay': true,
+            'backdrop-blur': isRightDrawerOpen,
+          }"
+        ></label>
+        <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+          <!-- Sidebar content here -->
+          <li><a>Profile Item 1</a></li>
+          <li><a>Profile Item 2</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
