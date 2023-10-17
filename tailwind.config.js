@@ -4,7 +4,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 // const colors = require('tailwindcss/colors')
 
 module.exports = {
-  darkMode: 'media',
+  darkMode: 'class',
   content: [
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
@@ -51,8 +51,8 @@ module.exports = {
     require("daisyui"),
   ],
   daisyui: {
-    themes: false, // ["dark", "light"],
-    // darkTheme: "business",
+    themes: ["light", "business"],
+    darkTheme: "business",
     logs: false,
   },
 }

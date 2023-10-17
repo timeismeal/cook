@@ -1,11 +1,13 @@
 <script setup>
+const isDark = false;
+
 useHead({
   htmlAttrs: {
-    "data-theme": "light",
-    "xdata-theme": "business",
+    "data-theme": isDark ? "dark" : "light",
+    class: isDark ? "dark" : "light",
   },
   bodyAttrs: {
-    class: "h-screen xoverflow-hidden",
+    class: "h-screen",
   },
   meta: [
     {
@@ -15,23 +17,13 @@ useHead({
   ],
 });
 
-const user = useSupabaseUser();
-const route = useRoute();
-// onMounted(() => {
-//   watch(
-//     user,
-//     (user, prevUser) => {
-//       if (prevUser && !user) {
-//         // user logged out
-//         navigateTo("/login");
-//       } else if (user && typeof route.query.redirect === "string") {
-//         // user logged in
-//         navigateTo(route.query.redirect);
-//       }
-//     },
-//     { immediate: true }
-//   );
-// });
+// const user = useSupabaseUser();
+// const route = useRoute();
+
+onMounted(() => {
+  // const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  // console.log("onmounted isDarkMode", isDarkMode);
+});
 </script>
 
 <template>

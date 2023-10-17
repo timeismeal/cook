@@ -33,7 +33,9 @@ const userNavigation = [
 
 <template>
   <div class="min-h-full.debug-yellow">
-    <div class="navbar bg-base-100 border-b">
+    <div
+      class="navbar bg-base-100 border-b border-neutral-200 dark:border-neutral-700"
+    >
       <div class="navbar-start">
         <div class="dropdown">
           <label
@@ -59,6 +61,7 @@ const userNavigation = [
           <div class="flex-none hidden lg:block">
             <ul class="menu menu-horizontal">
               <li v-for="nav of navigations">
+                <app-icon :icon="nav.icon" class="mr-2" />
                 <nuxt-link :to="nav.to" class="link font-semibold">{{
                   nav.name
                 }}</nuxt-link>
@@ -122,6 +125,9 @@ const userNavigation = [
         </label>
       </div>
     </div>
+
+    <!-- Divider -->
+    <!-- <div class="bg-base-content/10 mx-0 my-0 h-px"></div> -->
 
     <main>
       <div class="mx-auto max-w-7xl py-8 sm:px-8 lg:px-8">
