@@ -1,11 +1,19 @@
 <script setup>
-const isDark = false;
+import { useAppStateStore } from "@/stores/appState";
+
+const store = useAppStateStore();
+
+const isDarkMode = computed(() => store.isDarkMode);
+
+const htmlAttrs = computed(() => {
+  return {
+    "data-theme": isDarkMode.value ? "dark" : "light",
+    class: isDarkMode.value ? "dark" : "light",
+  };
+});
 
 useHead({
-  htmlAttrs: {
-    "data-theme": isDark ? "dark" : "light",
-    class: isDark ? "dark" : "light",
-  },
+  htmlAttrs,
   bodyAttrs: {
     class: "h-screen",
   },
@@ -15,14 +23,6 @@ useHead({
       content: "width=device-width, initial-scale=1.0",
     },
   ],
-});
-
-// const user = useSupabaseUser();
-// const route = useRoute();
-
-onMounted(() => {
-  // const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  // console.log("onmounted isDarkMode", isDarkMode);
 });
 </script>
 
