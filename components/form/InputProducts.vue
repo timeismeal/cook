@@ -5,13 +5,13 @@ import { useDbStore } from "@/stores/db";
 // -- data --
 const sb = useSupabaseClient();
 const db = useDbStore();
-const user = useSupabaseUser();
+// const user = useSupabaseUser();
 const selectedProduct = ref();
 const query = ref("");
 
 // -- props --
-// const props = defineProps({
-// })
+defineProps(["modelValue"]);
+const emit = defineEmits(["update:modelValue"]);
 
 // -- computed --
 const products = computed(() => {
@@ -19,10 +19,9 @@ const products = computed(() => {
 });
 
 const filteredProducts = computed(() => {
-  console.log("filteredProducts", products);
   return query.value === ""
-    ? products
-    : products.filter((p) => {
+    ? products.value
+    : products.value.filter((p) => {
         return p.label.toLowerCase().includes(query.value.toLowerCase());
       });
 });
@@ -30,23 +29,27 @@ const filteredProducts = computed(() => {
 // -- methods --
 const debouncedSearch = debounce(async (q) => {
   await searchProducts(q);
-}, 500);
+}, 250);
 
 const searchProducts = async (q) => {
-  console.log("searchProducts", { query: q });
-  const { data, error } = await sb.rpc("search_products", { query });
-  console.log("searchProducts data", data);
-  console.log("searchProducts error", error);
+  const { data, error } = await sb.rpc("search_products", { query: q });
   db.setProducts(data);
-  // products.value = data;
-  return data;
 };
+
+// -- watchers --
+watch(query, async (q) => {
+  await debouncedSearch(q);
+});
+
+watch(selectedProduct, (value) => {
+  emit("update:modelValue", value);
+});
 </script>
 
 <template>
   <pre>query: {{ query }}</pre>
-  <pre>filteredProducts: {{ filteredProducts }}</pre>
-  <pre>products: {{ products }}</pre>
+  <!-- <pre>filteredProducts: {{ filteredProducts }}</pre> -->
+  <!-- <pre>products: {{ products }}</pre> -->
   <FormInputCombobox
     :items="filteredProducts"
     label="Select Product"

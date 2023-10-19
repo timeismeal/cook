@@ -3,8 +3,6 @@ import { debounce } from "lodash";
 import { useDbStore } from "@/stores/db";
 
 const filteredProductTypes = computed(() => {
-  // console.log("filteredProductTypes", productTypes.value);
-  // return productTypes;
   return query.value === ""
     ? productTypes.value
     : productTypes.value.filter((pt) => {
@@ -17,7 +15,7 @@ const db = useDbStore();
 const user = useSupabaseUser();
 
 const selectedProductType = ref();
-const selectedProduct = ref();
+const selectedProduct = ref({});
 const query = ref("");
 
 // -- data --
@@ -65,26 +63,15 @@ const debouncedSearch = debounce(async (text) => {
 }, 500);
 
 const onSubmit = async () => {
-  console.log("onSubmit");
   const { data, error } = await sb
     .from("collections")
     .insert([{ ...form.value.value }])
     .select();
-
-  console.log("onSubmit data", data);
-  console.log("onSubmit error", error);
   return "submitted";
 };
 
 const searchProducts = async (query) => {
-  console.log("searchProducts", { query });
-  console.log("searchProducts sb.$http", sb);
-  // return "awesome";
-  // const { data, error } = await sb.rpc("echo", { say: "i love you" });
   const { data, error } = await sb.rpc("search_products", { query });
-  // const { data, error } = await sb.fetch("/search_products/" + query);
-  console.log("searchProducts data", data);
-  console.log("searchProducts error", error);
   products.value = data;
   return data;
 };
@@ -95,8 +82,6 @@ onMounted(async () => {
     body: { test: 123 },
   });
   db.setProductTypes(pts);
-  // db.productTypes.value = pts;
-  // console.log("onMounted productTypes", pts);
 });
 
 // const fetchCollections = async () => {
@@ -106,20 +91,21 @@ onMounted(async () => {
 </script>
 
 <template>
+  <pre>selectedProduct: {{ selectedProduct }}</pre>
   <FormInputProducts v-model="selectedProduct" />
   <pre>query: {{ query }}</pre>
   <pre>selectedProductType: {{ selectedProductType }}</pre>
-  <FormInputCombobox
+  <!-- <FormInputCombobox
     :items="productTypes"
     v-model:query="query"
     v-model:value="selectedProductType"
-  />
-  <FormKit
+  /> -->
+  <!-- <FormKit
     type="text"
     v-model="searchProductText"
     @input="debouncedSearch(searchProductText)"
     placeholder="Search product..."
-  ></FormKit>
+  ></FormKit> -->
 
   <FormKit
     type="form"

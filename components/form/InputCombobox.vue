@@ -44,14 +44,11 @@ const filteredItems = computed(() => {
 
 // -- methods --
 const onChange = (inputValue) => {
-  console.log("onChange inputValue", inputValue);
-  // query.value = inputValue;
   emit("update:query", inputValue);
 };
 
 // -- watches --
 watch(selectedItem, (value) => {
-  console.log("watch selectedItem", value);
   emit("update:value", value);
 });
 </script>
