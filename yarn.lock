@@ -593,6 +593,13 @@
     "@formkit/utils" "1.2.2"
     "@formkit/validation" "1.2.2"
 
+"@formkit/icons@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@formkit/icons/-/icons-1.2.2.tgz#5441c7334dddd1837a1f0023e79fcf9b3b8cf631"
+  integrity sha512-u9QkOaXLoSwCaiqDRhDYhhKLaSM0k5E+yQP43rJPJ/kHiPHfKQ2UoiDyvcB9EKkh9CDYVB8/6A5IMsUp4n0Uyg==
+  dependencies:
+    "@formkit/core" "1.2.2"
+
 "@formkit/inputs@1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@formkit/inputs/-/inputs-1.2.2.tgz#5515c149969412f3472b6977b8d4e5b6447c5f1f"
@@ -632,7 +639,7 @@
     "@formkit/utils" "1.2.2"
     "@formkit/validation" "1.2.2"
 
-"@formkit/themes@1.2.2":
+"@formkit/themes@1.2.2", "@formkit/themes@^1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@formkit/themes/-/themes-1.2.2.tgz#9a4e7f6a6c9efbddc035cd8ea72a377f276dcb22"
   integrity sha512-YxNmReXkvuF9OP6wAHVyJvTZ+hd+zRfOyTjie75fQ1EkWCjcn2jk+DCY4U+IkgOnq6A/vcKjP5vyuQqsglUgAA==
@@ -4190,7 +4197,7 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==
 
-lodash@^4.17.14, lodash@^4.17.15:
+lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==

@@ -20,12 +20,15 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@formkit/icons": "^1.2.2",
     "@formkit/nuxt": "^1.2.2",
+    "@formkit/themes": "^1.2.2",
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",
     "@pinia/nuxt": "^0.4.11",
     "@vueuse/core": "^10.4.1",
     "dotenv": "^16.3.1",
+    "lodash": "^4.17.21",
     "openai": "3.3.0",
     "pinia": "^2.1.6",
     "pug": "^3.0.2",

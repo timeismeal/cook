@@ -2,6 +2,7 @@
 
 const defaultTheme = require('tailwindcss/defaultTheme')
 // const colors = require('tailwindcss/colors')
+const FormKitVariants = require('@formkit/themes/tailwindcss')
 
 module.exports = {
   darkMode: 'class',
@@ -11,6 +12,7 @@ module.exports = {
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
     "./app.vue",
+    "./tailwind-theme.js",
   ],
   theme: {
     extend: {
@@ -49,6 +51,7 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require("daisyui"),
+    FormKitVariants,
   ],
   daisyui: {
     themes: ["light", "business"],

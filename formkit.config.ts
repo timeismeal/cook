@@ -1,8 +1,12 @@
-import { defineFormKitConfig } from '@formkit/vue'
+import { generateClasses } from '@formkit/themes'
+import { genesisIcons } from '@formkit/icons'
+import tailwindGenesisTheme from '@/assets/tailwind-genesis-theme.js' // change to your theme's path
 
-export default defineFormKitConfig({
-  // here we can access `useRuntimeConfig` because
-  // our function will be called by Nuxt.
-  // const config = useRuntimeConfig()
-	// const pro = createProPlugin(config.FORMKIT_KEY)
-})
+export default {
+  icons: {
+    ...genesisIcons,
+  },
+  config: {
+    classes: generateClasses(tailwindGenesisTheme),
+  },
+}
