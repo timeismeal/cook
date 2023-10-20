@@ -49,7 +49,7 @@ const onChange = (inputValue) => {
 
 // -- watches --
 watch(selectedItem, (value) => {
-  emit("update:value", value);
+  emit("update:value", value.data ? value.data : value.data);
 });
 </script>
 
@@ -97,12 +97,13 @@ watch(selectedItem, (value) => {
                 {{ item.label }}
               </span>
               <span
+                v-if="item.sublabel"
                 :class="[
                   'ml-2 truncate text-gray-500',
                   active ? 'text-indigo-200' : 'text-gray-500',
                 ]"
               >
-                {{ item.label }}
+                ({{ item.sublabel }})
               </span>
             </div>
 

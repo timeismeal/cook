@@ -1,23 +1,19 @@
 import { defineStore } from 'pinia'
 
 export const useDbStore = defineStore('db', () => {
-	const products = ref([])
-	const productTypes = ref([])
-	const productGroups = ref([])
+	const record = ref({
+		products: [],
+		productTypes: [],
+		productGroups: [],
+	})
 
-	function setProducts(data) {
-		products.value = data
-	}
-
-	function setProductTypes(data) {
-		productTypes.value = data
+	function set(key, payload) {
+		if (record.value[key] === undefined) return
+		record.value[key] = payload
 	}
 
 	return {
-		products,
-		productTypes,
-		productGroups,
-		setProducts,
-		setProductTypes,
+		record,
+		set,
 	}
 })

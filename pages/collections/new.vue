@@ -76,25 +76,23 @@ const searchProducts = async (query) => {
   return data;
 };
 
-onMounted(async () => {
-  const pts = await $fetch("/api/productTypes/fetch", {
-    method: "POST",
-    body: { test: 123 },
-  });
-  db.setProductTypes(pts);
-});
+// onMounted(async () => {
+//   const pts = await $fetch("/api/productTypes/fetch", {
+//     method: "POST",
+//     body: { test: 123 },
+//   });
+//   db.setProductTypes(pts);
+// });
 
 // const fetchCollections = async () => {
-//   const data = await $fetch("/api/collections/get");
+//   const data = await $fetch("/api/collections/fetch");
 //   collections.value = data;
 // };
 </script>
 
 <template>
   <pre>selectedProduct: {{ selectedProduct }}</pre>
-  <FormInputProducts v-model="selectedProduct" />
-  <pre>query: {{ query }}</pre>
-  <pre>selectedProductType: {{ selectedProductType }}</pre>
+  <FormInputProducts v-model="selectedProduct" label="The die is cast" />
   <!-- <FormInputCombobox
     :items="productTypes"
     v-model:query="query"
@@ -131,5 +129,5 @@ onMounted(async () => {
     <div class="mb-3"></div>
   </FormKit>
   <pre>form.value {{ form.value }}</pre>
-  <pre>db {{ productTypes }}</pre>
+  <!-- <pre>db {{ productTypes }}</pre> -->
 </template>

@@ -2,7 +2,7 @@
 const products = ref([]);
 
 const fetchProducts = async () => {
-  const data = await $fetch("/api/products/get");
+  const data = await $fetch("/api/products/fetch");
   products.value = data;
 };
 </script>

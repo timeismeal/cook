@@ -11,7 +11,7 @@ const collections = ref();
 // -- methods --
 // const askQuestion = async () => { await ... }
 const fetchCollections = async () => {
-  const data = await $fetch("/api/collections/get");
+  const data = await $fetch("/api/collections/fetch");
   collections.value = data;
 };
 </script>
