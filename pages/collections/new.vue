@@ -58,10 +58,6 @@ const productTypes = computed(() => {
 });
 
 // -- methods --
-const debouncedSearch = debounce(async (text) => {
-  await searchProducts(text);
-}, 500);
-
 const onSubmit = async () => {
   const { data, error } = await sb
     .from("collections")
@@ -70,20 +66,6 @@ const onSubmit = async () => {
   return "submitted";
 };
 
-const searchProducts = async (query) => {
-  const { data, error } = await sb.rpc("search_products", { query });
-  products.value = data;
-  return data;
-};
-
-// onMounted(async () => {
-//   const pts = await $fetch("/api/productTypes/fetch", {
-//     method: "POST",
-//     body: { test: 123 },
-//   });
-//   db.setProductTypes(pts);
-// });
-
 // const fetchCollections = async () => {
 //   const data = await $fetch("/api/collections/fetch");
 //   collections.value = data;
@@ -91,20 +73,8 @@ const searchProducts = async (query) => {
 </script>
 
 <template>
-  <pre>selectedProduct: {{ selectedProduct }}</pre>
+  <!-- <pre>selectedProduct: {{ selectedProduct }}</pre> -->
   <FormInputProducts v-model="selectedProduct" label="The die is cast" />
-  <!-- <FormInputCombobox
-    :items="productTypes"
-    v-model:query="query"
-    v-model:value="selectedProductType"
-  /> -->
-  <!-- <FormKit
-    type="text"
-    v-model="searchProductText"
-    @input="debouncedSearch(searchProductText)"
-    placeholder="Search product..."
-  ></FormKit> -->
-
   <FormKit
     type="form"
     #default="{ value }"
