@@ -29,6 +29,7 @@ export default defineNuxtConfig({
     }
   },
   css: ['~/assets/css/custom.css'],
+  // plugins: no need to define plugins, they are auto-imported
   postcss: {
     plugins: {
       tailwindcss: {},

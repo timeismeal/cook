@@ -14,5 +14,9 @@ const fetchProducts = async () => {
     value="Fetch Products"
     )
 
+  .my-5
+    nuxt-link(to="/onboarding")
+      | Go to Onboarding
+
   pre products: {{ products }}
 </template>
