@@ -2,28 +2,28 @@
 import { useAppStateStore } from "@/stores/appState";
 
 const store = useAppStateStore();
-const isRightDrawerOpen = ref(false);
+const isDrawerOpen = ref(false);
 
 const navigations = [
   // { name: "Home", href: "#", current: true },
   {
     name: "Recipes & Collections",
     to: "/collections",
-    current: false,
+    // current: false,
     icon: "collection",
   },
   {
     name: "Shopping Lists",
     to: "/lists",
-    current: false,
+    // current: false,
     icon: "shopping-cart",
   },
   // { name: "Chats", href: "/chats", current: false },
 ];
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "/settings" },
-  { name: "Sign out", href: "/signout" },
+const profileMenu = [
+  { name: "Your Profile", to: "#" },
+  { name: "Settings", to: "/settings" },
+  { name: "Sign out", to: "/signout" },
 ];
 </script>
 
@@ -35,7 +35,7 @@ const userNavigation = [
       <div class="navbar-start flex items-center">
         <div class="dropdown">
           <label
-            for="my-drawer"
+            for="nav-drawer"
             tabindex="0"
             class="btn btn-ghost btn-circle lg:hidden"
           >
@@ -116,9 +116,9 @@ const userNavigation = [
             <span class="badge badge-xs badge-primary indicator-item"></span>
           </div>
         </button> -->
-        <!-- <label for="my-drawer" tabindex="0" class="btn btn-ghost btn-circle"> -->
+        <!-- <label for="nav-drawer" tabindex="0" class="btn btn-ghost btn-circle"> -->
         <label
-          for="right-drawer"
+          for="profile-drawer"
           tabindex="0"
           class="btn btn-ghost btn-circle avatar"
         >
@@ -133,52 +133,18 @@ const userNavigation = [
 
     <main>
       <div class="mx-auto max-w-7xl py-8 sm:px-8 lg:px-8">
-        <pre>isRightDrawerOpen {{ isRightDrawerOpen }}</pre>
         <slot />
       </div>
     </main>
-
-    <div class="drawer">
-      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-side">
-        <label
-          for="my-drawer"
-          aria-label="close sidebar"
-          class="drawer-overlay"
-        ></label>
-        <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-          <li v-for="nav of navigations" class="flex flex-row">
-            <nuxt-link :to="nav.to" class="link font-semibold">
-              <icon :icon="nav.icon" />
-              {{ nav.name }}</nuxt-link
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="drawer drawer-end">
-      <input
-        id="right-drawer"
-        type="checkbox"
-        class="drawer-toggle"
-        v-model="isRightDrawerOpen"
-      />
-      <div class="drawer-side">
-        <label
-          for="right-drawer"
-          aria-label="close sidebar"
-          :class="{
-            'drawer-overlay': true,
-            'backdrop-blur': isRightDrawerOpen,
-          }"
-        ></label>
-        <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-          <!-- Sidebar content here -->
-          <li><a>Profile Item 1</a></li>
-          <li><a>Profile Item 2</a></li>
-        </ul>
-      </div>
-    </div>
   </div>
+
+  <!-- LEFT DRAWER -->
+  <Drawer id="nav-drawer">
+    <DrawerMenuContent :items="navigations" />
+  </Drawer>
+
+  <!-- RIGHT DRAWER -->
+  <Drawer id="profile-drawer" left-side>
+    <DrawerMenuContent :items="profileMenu" />
+  </Drawer>
 </template>
