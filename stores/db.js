@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 export const useDbStore = defineStore('db', () => {
 	const record = ref({
 		dietaryOptions: [],
+		foodSensitivities: [],
 		products: [],
 		productTypes: [],
 		productGroups: [],

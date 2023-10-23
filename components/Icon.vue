@@ -37,6 +37,8 @@ const iconName = computed(() => {
     collection: "QueueList",
     moon: "Moon",
     "shopping-cart": "ShoppingCart",
+    "stepper-back": "ChevronLeft",
+    "stepper-next": "ChevronRight",
     sun: "Sun",
   }[props.icon];
   return `${x}Icon`;

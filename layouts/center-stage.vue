@@ -1,7 +1,7 @@
 <script setup>
 useHead({
   bodyAttrs: {
-    class: "h-screen xoverflow-hidden",
+    class: "xh-screen xoverflow-hidden",
   },
   meta: [
     {
@@ -29,8 +29,12 @@ useHead({
 // const askQuestion = async () => { await ... }
 </script>
 
-<template lang="pug">
-.flex.justify-center.items-center.h-screen.w-screen
-  .debug-danger
-    slot
+<template>
+  <div
+    class="flex justify-center items-center min-h-screen w-screen overflow-y-scroll"
+  >
+    <div class="m-8">
+      <slot></slot>
+    </div>
+  </div>
 </template>

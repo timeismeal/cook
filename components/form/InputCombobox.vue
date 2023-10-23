@@ -11,7 +11,7 @@ import {
   ComboboxOptions,
 } from "@headlessui/vue";
 
-const emit = defineEmits(["update:query", "update:value"]);
+const emit = defineEmits(["back", "next"]);
 
 // -- data --
 const selectedItem = ref();

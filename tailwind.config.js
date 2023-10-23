@@ -20,6 +20,9 @@ module.exports = {
         500: '500px',
       },
       colors: {
+        "lovely-red": {
+          DEFAULT: '#E63946',
+        },
         black: {
           DEFAULT: '#000000',
           100: "#000000",
@@ -57,7 +60,15 @@ module.exports = {
     FormKitVariants,
   ],
   daisyui: {
-    themes: ["light", "business"],
+    themes: {
+      "light": {
+        "checkbox-checked-bg": "#E63946",
+        // "checkbox-checked-bg": "var(--lovely-red)",
+        // "checkbox-checked-icon": "var(--lovely-red)"
+        "checkbox-checked-icon-color": "var(--color-primary-content)",
+      },
+      "business": {},
+    },
     darkTheme: "business",
     logs: false,
   },
