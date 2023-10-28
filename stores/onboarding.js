@@ -4,7 +4,7 @@ export const useOnboardingStore = defineStore('onboarding', () => {
 	const data = ref({
 		dietaryRestrictionId: null,
 		foodSensitivityIds: [],
-		dislikeIds: [],
+		dislikeProductIds: [],
 	})
 
 	// function set(key, payload) {

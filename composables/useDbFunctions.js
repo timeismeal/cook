@@ -3,6 +3,7 @@ import { snakeCase } from "lodash";
 
 export const useDbFunctions = () => {
 	const db = useDbStore()
+	const { isEmpty } = useAppFunctions()
 
 	const fetchAndStore = async (options) => {
 		const record = db.record[options.table]
@@ -14,6 +15,9 @@ export const useDbFunctions = () => {
 				select: options.select,
 			}),
 		})
+		if (isEmpty(data)) {
+			console.error('fetchAndStore data is undefined', options)
+		}
 		db.set(options.table, data)
 		return data
 	}

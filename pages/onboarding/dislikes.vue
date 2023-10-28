@@ -16,59 +16,60 @@ const steps = ref([
 ]);
 
 // -- computed --
-const foodSensitivities = computed(() => {
-  let items = db.record.foodSensitivities || [];
-  return sortBy(items, "label");
+const foodDislikes = computed(() => {
+  let items = db.record.foodDislikes || [];
+  return sortBy(items, "products.label");
 });
 
-const fetchFoodSensitivities = async () => {
+const fetchFoodDislikes = async () => {
   await useDbFunctions().fetchAndStore({
-    table: "foodSensitivities",
-    select: "id, label, summary",
+    table: "foodDislikes",
+    select: "id, is_main, products (id, label)",
   });
 };
 
 // -- callback --
 onMounted(() => {
   emit("mounted", {
-    backTo: "/onboarding/",
-    nextTo: "/onboarding/dislikes",
+    backTo: "/onboarding/allergies",
+    nextTo: "/onboarding/signup",
   });
-  fetchFoodSensitivities();
+  fetchFoodDislikes();
 });
 </script>
 
 <template>
   <div class="text-left max-w-500 xw-full">
     <div>
-      <!-- <h1 class="my-5 text-3xl font-semibold">Welcome!</h1> -->
-      <div class="mb-5">How about your food allergies</div>
+      <div class="mb-5">How about your dislikes?</div>
+      <!-- <pre>db store: {{ db.record.foodDislikes }}</pre> -->
     </div>
 
     <FormKit type="form" :actions="false">
       <div
         class="overflow-hidden rounded-md border border-gray-300 bg-white mb-5"
       >
-        <!-- <pre>Food Sensitivities {{ foodSensitivities }}</pre> -->
         <ul role="list" class="list-none divide-y divide-gray-300">
           <li
-            v-for="fs of foodSensitivities"
-            :key="fs.id"
+            v-for="fd of foodDislikes"
+            :key="fd.id"
             class="flex items-start px-6 py-4 hover:bg-primary hover:text-white"
-            :for="fs.id"
+            :for="fd.id"
           >
             <input
               type="checkbox"
               class="checkbox form-checkbox h-6 w-6 text-primary mr-2"
-              :id="fs.id"
-              :value="fs.id"
-              v-model="onboardingStore.data.foodSensitivityIds"
+              :id="fd.id"
+              :value="fd.id"
+              v-model="onboardingStore.data.dislikeProductIds"
             />
             <div>
               <div>
-                <label class="font-semibold" :for="fs.id">{{ fs.label }}</label>
+                <label class="font-semibold" :for="fd.id">{{
+                  fd.products.label
+                }}</label>
                 <div v-if="isShowSummary" class="text-sm text-gray-500">
-                  {{ fs.summary }}
+                  {{ fd.products.summary }}
                 </div>
               </div>
             </div>

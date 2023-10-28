@@ -25,17 +25,20 @@ const onBack = () => {
 };
 const onNext = () => {
   emit("next");
-  router.push("/onboarding/allergies");
 };
 </script>
 
 <template>
   <div id="form-input-stepper" class="flex justify-end">
-    <div v-if="!hideBack" class="button button-secondary mr-3" @click="onBack">
+    <div
+      v-if="!hideBack"
+      class="button button-secondary mr-3 pointer"
+      @click="onBack"
+    >
       <Icon icon="stepper-back" />
       Back
     </div>
-    <div v-if="!hideNext" class="button" @click="onNext">
+    <div v-if="!hideNext" class="button pointer" @click="onNext">
       Next
       <Icon icon="stepper-next" />
     </div>
